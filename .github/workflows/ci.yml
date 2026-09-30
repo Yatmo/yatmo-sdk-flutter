@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+jobs:
+  analyze:
+    name: Analyse the package and build the example (Android)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: dart pub publish --dry-run
+      - name: Build the example
+        working-directory: example
+        run: |
+          flutter pub get
+          flutter build apk --debug --dart-define=YATMO_LICENSE_KEY=${{ secrets.YATMO_TEST_LICENSE_KEY }}

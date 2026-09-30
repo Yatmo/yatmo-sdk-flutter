@@ -1,0 +1,24 @@
+name: yatmo_sdk
+description: Yatmo neighbourhood intelligence for Flutter real-estate apps, a MapLibre map with points of interest, travel times and neighbourhood summaries.
+version: 1.0.0
+homepage: https://documentation.yatmo.com/mobile/flutter
+repository: https://github.com/yatmo/yatmo-sdk-flutter
+issue_tracker: https://github.com/yatmo/yatmo-sdk-flutter/issues
+topics:
+  - maps
+  - maplibre
+  - real-estate
+  - geolocation
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  maplibre_gl: ^0.27.0
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
